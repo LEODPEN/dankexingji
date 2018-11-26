@@ -1,0 +1,34 @@
+#ifndef RCOMMENT_H
+#define RCOMMENT_H
+
+
+#include <QWidget>
+#include"ui_customerwindow.h"
+#include"hotel.h"
+#include"room.h"
+namespace Ui {
+class rcomment;
+}
+
+class rcomment : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit rcomment(customerwindow*w1,Hotel*pHotel,Room *pRoom );
+    ~rcomment();
+
+private:
+    Ui::rcomment *ui;
+    customerwindow*w1;
+    Hotel* pHotel;
+    Room *pRoom;
+private slots:
+    void give5();
+    void give4();
+    void give3();
+    void give2();
+    void give1();
+};
+
+#endif // RCOMMENT_H

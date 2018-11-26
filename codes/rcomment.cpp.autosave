@@ -1,0 +1,128 @@
+#include "rcomment.h"
+#include "ui_rcomment.h"
+#include"customerwindow.h"
+
+extern QVector<Hotel>hotelList;
+extern QVector<Room>Order;
+rcomment::rcomment(customerwindow*w1,Hotel*pHotel,Room *pRoom) :
+    w1(w1),pHotel(pHotel),pRoom(pRoom),
+    ui(new Ui::rcomment)
+{
+    ui->setupUi(this);
+    connect(ui->b5,SIGNAL(clicked()),this,SLOT(give5()));//评价5分
+    connect(ui->b4,SIGNAL(clicked()),this,SLOT(give4()));//评价4分
+    connect(ui->b3,SIGNAL(clicked()),this,SLOT(give3()));//评价3分
+    connect(ui->b2,SIGNAL(clicked()),this,SLOT(give2()));//评价2分
+    connect(ui->b1,SIGNAL(clicked()),this,SLOT(give1()));//评价1分
+}
+
+void rcomment::give5()
+{
+    pHotel->getPoint();
+    pHotel->setPoint(5.0);
+    QMessageBox msg;
+    msg.setText(QStringLiteral("评价成功！"));
+    msg.setWindowTitle(QStringLiteral("Success"));
+    msg.exec();
+    this->close();
+}
+void dcomment::give4(){
+if(pDish->getDstate()==oncomment){
+    QMessageBox msg;
+    msg.setText(QStringLiteral("您已评价！"));
+    msg.exec();
+    this->close();}
+else if(pDish->getDstate()==served){
+              pDish->DOncomment();
+              pDish->setComment(4.0);
+           for(int i=0;i<TodoList.size();i++)
+                 if(pDish->showWaterNum()==TodoList[i].showWaterNum())
+                   {TodoList[i].setComment(4.0);
+                     TodoList[i].DOncomment();
+                     break;}
+     QMessageBox msg;
+     msg.setText(QStringLiteral("评价成功！"));
+     msg.setWindowTitle(QStringLiteral("Success"));
+     msg.exec();
+     this->close();}
+else{ QMessageBox msg;
+msg.setText(QStringLiteral("您还不能评价！"));
+msg.exec();
+this->close();}
+}
+
+void dcomment::give3(){
+    if(pDish->getDstate()==oncomment){
+        QMessageBox msg;
+        msg.setText(QStringLiteral("您已评价！"));
+        msg.exec();
+        this->close();}
+    else if(pDish->getDstate()==served){
+                  pDish->DOncomment();
+                  pDish->setComment(3.0);
+               for(int i=0;i<TodoList.size();i++)
+                     if(pDish->showWaterNum()==TodoList[i].showWaterNum())
+                       {TodoList[i].setComment(3.0);
+                         TodoList[i].DOncomment();
+                         break;}
+         QMessageBox msg;
+         msg.setText(QStringLiteral("评价成功！"));
+         msg.setWindowTitle(QStringLiteral("Success"));
+         msg.exec();
+         this->close();}
+    else{ QMessageBox msg;
+    msg.setText(QStringLiteral("您还不能评价！"));
+    msg.exec();
+    this->close();}
+    }
+void dcomment::give2(){
+    if(pDish->getDstate()==oncomment){
+        QMessageBox msg;
+        msg.setText(QStringLiteral("您已评价！"));
+        msg.exec();
+        this->close();}
+    else if(pDish->getDstate()==served){
+                  pDish->DOncomment();
+                  pDish->setComment(2.0);
+                 for(int i=0;i<TodoList.size();i++)
+                     if(pDish->showWaterNum()==TodoList[i].showWaterNum())
+                       {TodoList[i].setComment(2.0);
+                         TodoList[i].DOncomment();
+                         break;}
+         QMessageBox msg;
+         msg.setText(QStringLiteral("评价成功！"));
+         msg.setWindowTitle(QStringLiteral("Success"));
+         msg.exec();
+         this->close();}
+    else{ QMessageBox msg;
+    msg.setText(QStringLiteral("您还不能评价！"));
+    msg.exec();
+    this->close();}
+    }
+void dcomment::give1(){
+    if(pDish->getDstate()==oncomment){
+        QMessageBox msg;
+        msg.setText(QStringLiteral("您已评价！"));
+        msg.exec();
+        this->close();}
+    else if(pDish->getDstate()==served){
+                  pDish->DOncomment();
+                  pDish->setComment(1.0);
+               for(int i=0;i<TodoList.size();i++)
+                     if(pDish->showWaterNum()==TodoList[i].showWaterNum())
+                       {TodoList[i].setComment(1.0);
+                         TodoList[i].DOncomment();break;}
+         QMessageBox msg;
+         msg.setText(QStringLiteral("评价成功！"));
+         msg.setWindowTitle(QStringLiteral("Success"));
+         msg.exec();
+         this->close();}
+    else{ QMessageBox msg;
+    msg.setText(QStringLiteral("您还不能评价！"));
+    msg.exec();
+    this->close();}
+    }
+dcomment::~dcomment()
+{
+    delete ui;
+}
