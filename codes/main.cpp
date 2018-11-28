@@ -1,3 +1,7 @@
+/*   
+    copyright@pfdsh 
+            446110075@qq.com 
+*/
 #include"loginwindow.h"
 #include"customerwindow.h"
 #include"hotel.h"
